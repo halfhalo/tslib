@@ -114,6 +114,13 @@ else
 CY8MRLN_PALMPRE_MODULE =
 endif
 
+if ENABLE_MTINPUT_MODULE
+##//jiangshan . add mtinput module for multi-touch
+MTINPUT_MODULE = mtinput.la
+else
+MTINPUT_MODULE = 
+endif
+
 pluginexec_LTLIBRARIES = \
 	$(LINEAR_MODULE) \
 	$(DEJITTER_MODULE) \
@@ -130,7 +137,8 @@ pluginexec_LTLIBRARIES = \
 	$(H2200_LINEAR_MODULE) \
 	$(INPUT_MODULE) \
 	$(TOUCHKIT_MODULE) \
-	$(CY8MRLN_PALMPRE_MODULE)
+	$(CY8MRLN_PALMPRE_MODULE) \
+	$(MTINPUT_MODULE)
   
 variance_la_SOURCES	= variance.c
 variance_la_LDFLAGS	= -module $(LTVSN)
@@ -185,3 +193,6 @@ linear_h2200_la_LDFLAGS	= -module $(LTVSN)
 
 cy8mrln_palmpre_la_SOURCES = cy8mrln-palmpre.c
 cy8mrln_palmpre_la_LDFLAGS = -module $(LTVSN)
+
+mtinput_la_SOURCES	= mtinput-raw.c
+mtinput_la_LDFLAGS	= -module $(LTVSN)
